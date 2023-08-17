@@ -1,0 +1,36 @@
+ <!-- Hereda de "aplicacion/base" que es donde esta todo el HTML con Css y Js-->   
+ {% extends  'aplicacion/base.html' %} 
+
+ <!-- Carga archivos estaticos -->   
+ {% load static %} 
+
+ <!-- Define el contenido del titulo-->   
+ {% block titulo %}
+    Agregar Alquiler
+ {% endblock titulo %}
+
+  <!-- Define el contenido de "Contenido"-->  
+ {% block contenido %}
+
+ <style>
+  
+  form input[type="submit"] {
+       width: auto; /* Ancho automático para ajustarse al contenido */
+       height: 35px;
+       padding: 5px 15px; /* Espaciado interno horizontal */
+       background-color: black ; /* Cambia el color de fondo */
+       color:white; /* Cambia el color del texto */
+       border: none; /* Elimina el borde */
+       cursor: pointer;
+   }
+
+</style>
+    
+    <h2>Agregar item a Alquileres</h2>
+    <form action="" method="post"</form>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Enviar"
+ {% endblock contenido %}

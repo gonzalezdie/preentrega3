@@ -1,0 +1,61 @@
+{% extends 'aplicacion/base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+    Buscador
+{% endblock titulo %}
+
+{% block contenido %}
+    {% if alquileres %}
+        <h2>Resultados de Alquileres:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Tipo</th>
+                    <th style="text-align: center;">Ambientes</th>
+                    <th style="text-align: center;">Localidad</th>
+                    <th style="text-align: center;">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alquiler in alquileres %}
+                    <tr>
+                        <td>{{ alquiler.tipo }}</td>
+                        <td style="text-align: center;">{{ alquiler.ambientes }}</td>
+                        <td style="text-align: center;"> {{ alquiler.localidad }}</td>
+                        <td style="text-align: center;">{{ alquiler.precio }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% if ventas %}
+        <h2>Resultados de Ventas:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: left;">Tipo</th>
+                    <th style="text-align: center;">Ambientes</th>
+                    <th style="text-align: left;">Localidad</th>
+                    <th style="text-align: right;">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tbody>
+                {% for venta in ventas %}
+                    <tr>
+                        <td>{{ venta.tipo }}</td>
+                        <td style="text-align: center;">{{ venta.ambientes }}</td>
+                        <td style="text-align: center;"> {{ venta.localidad }}</td>
+                        <td style="text-align: center;">{{ venta.precio }}</td>
+                    </tr>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+
+{% endblock contenido %}

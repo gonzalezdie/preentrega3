@@ -1,0 +1,37 @@
+ <!-- Hereda de "aplicacion/base" que es donde esta todo el HTML con Css y Js-->   
+ {% extends  'aplicacion/base.html' %}  
+
+ <!-- Carga archivos estaticos --> 
+ {% load static %}                   
+
+ <!-- Define el contenido del titulo-->   
+ {% block titulo %}
+   Bienvenido a nuestra seccion de Asesoramiento
+ {% endblock titulo %}
+
+  <!-- Define el contenido de "Contenido"-->  
+ {% block contenido %}
+ <h1> Asesores </h1>
+      <table class="table table-striped">
+         <thead>
+            <tr>
+               <th>Id</th>
+               <th>Nombre</th>
+               <th>Apellido</th>
+               <th>Telefono</th>
+               <th>Email</th>
+            </tr>
+         </thead>
+         <tbody>
+      {% for t in asesores %}    <!-- La estructura que recorre es "la clave del DIC" que creo en el "VIEWS"-->
+            <tr>
+               <td>{{ t.id }}</td>
+               <td>{{ t.nombre }}</td>
+               <td>{{ t.apellido }}</td>
+               <td>{{ t.telefono }}</td>
+               <td>{{ t.email }}</td>
+            </tr>
+      {% endfor %}
+          </tbody>
+       </table>
+{% endblock contenido %}

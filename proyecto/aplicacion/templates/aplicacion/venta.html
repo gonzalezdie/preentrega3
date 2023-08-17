@@ -1,0 +1,42 @@
+ <!-- Hereda de "aplicacion/base" que es donde esta todo el HTML con Css y Js-->   
+ {% extends  'aplicacion/base.html' %}  
+
+ <!-- Carga archivos estaticos --> 
+ {% load static %}                   
+
+ <!-- Define el contenido del titulo-->   
+ {% block titulo %}
+  Esta en nuestra seccion de Ventas
+ {% endblock titulo %}
+
+  <!-- Define el contenido de "Contenido"-->  
+ {% block contenido %}
+ <h1> Ventas </h1>
+      <table class="table table-striped">
+         <thead>
+          <table class="table table-striped">
+            <form action="/buscar_ventas" method="get" class="search-form">
+               {% csrf_token %}
+               <div class="search-container">
+                   <input type="text" name="buscar" id="buscar" placeholder="Buscar">
+                   <input type="submit" value="Enviar" class="submit-button">
+               </div>
+            <tr>
+               <th>Tipo</th>
+               <th>Ambientes</th>
+               <th>Localidad</th>
+               <th>Precio</th>
+            </tr>
+         </thead>
+         <tbody>
+      {% for t in ventas %}    <!-- La estructura que recorre es "la clave del DIC" que creo en el "VIEWS"-->
+            <tr>
+               <td>{{ t.tipo }}</td>
+               <td>{{ t.ambientes }}</td>
+               <td>{{ t.localidad }}</td>
+               <td>{{ t.precio }}</td>
+            </tr>
+      {% endfor %}
+          </tbody>
+       </table>
+{% endblock contenido %}
